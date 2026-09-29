@@ -32,7 +32,7 @@ button,
 input,
 select,
 textarea {
-  border-radius: 5px;
+  border-radius: 2px;
 }
 a {
   color: inherit;
@@ -120,7 +120,7 @@ small {
   background: #fff0eb;
   color: #942a26;
   padding: 12px;
-  border-radius: 4px;
+  border-radius: 2px;
   font-size: 14px;
 }
 .preline {
@@ -270,15 +270,6 @@ textarea {
   align-items: center;
   gap: 9px;
 }
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #315744;
-  display: grid;
-  place-content: center;
-  font-size: 14px;
-}
 .sidebar-bottom strong {
   font-size: 12px;
   overflow-wrap: anywhere;
@@ -312,10 +303,10 @@ textarea {
   color: #a6afa1;
   margin: 0 15px;
 }
-.role-pill {
+.role-label {
   padding: 6px 12px;
   border: 1px solid #dce3d6;
-  border-radius: 20px;
+  border-radius: 2px;
   font-size: 11px;
 }
 .workspace main {
@@ -343,7 +334,7 @@ textarea {
   background: white;
   border: 1px solid var(--line);
   padding: 28px;
-  border-radius: 8px;
+  border-radius: 2px;
   margin-bottom: 25px;
 }
 .panel h2 {
@@ -362,7 +353,7 @@ textarea {
 .stat {
   background: white;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 22px;
 }
 .stat span {
@@ -404,7 +395,7 @@ textarea {
 .order-card {
   background: white;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 24px;
 }
 .order-head {
@@ -420,7 +411,7 @@ textarea {
 .badge {
   display: inline-block;
   padding: 4px 9px;
-  border-radius: 4px;
+  border-radius: 2px;
   background: #edf0e8;
   font-size: 11px;
   font-weight: 600;
@@ -472,16 +463,6 @@ textarea {
   grid-column: 1/-1;
   font-size: 14px;
 }
-.empty-icon {
-  width: 55px;
-  height: 55px;
-  background: #e8eee2;
-  display: grid;
-  place-content: center;
-  border-radius: 50%;
-  font-size: 25px;
-  margin: 0 auto 20px;
-}
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -517,7 +498,7 @@ textarea {
 .item-list {
   background: white;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   overflow: hidden;
 }
 .menu-item {
@@ -534,7 +515,7 @@ textarea {
   width: 95px;
   height: 80px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 2px;
   flex-shrink: 0;
 }
 .no-image {
@@ -593,9 +574,8 @@ textarea {
   max-width: 500px;
   background: var(--green);
   color: white;
-  box-shadow: 0 5px 40px #0003;
   padding: 16px 22px;
-  border-radius: 6px;
+  border-radius: 2px;
   display: flex;
   gap: 20px;
   font-size: 14px;
@@ -614,18 +594,16 @@ textarea {
 }
 dialog {
   border: 0;
-  border-radius: 10px;
+  border-radius: 2px;
   padding: 28px;
   background: #fffefa;
   color: inherit;
   max-width: 650px;
   width: calc(100% - 30px);
   max-height: 90vh;
-  box-shadow: 0 20px 80px #0004;
 }
 dialog::backdrop {
   background: #0c271db3;
-  backdrop-filter: blur(3px);
 }
 .dialog-header {
   display: flex;
@@ -652,15 +630,6 @@ dialog::backdrop {
   color: #fff7dd;
   position: relative;
   overflow: hidden;
-}
-.login-art:after {
-  content: "✺";
-  position: absolute;
-  font-size: 550px;
-  color: #28513a;
-  right: -140px;
-  bottom: -120px;
-  z-index: 0;
 }
 .login-art > * {
   position: relative;
@@ -781,9 +750,6 @@ dialog::backdrop {
     top: 15px;
     border: 0;
     padding: 0;
-  }
-  .sidebar-bottom .avatar {
-    display: none;
   }
   .sidebar-bottom strong {
     font-size: 11px;
@@ -907,7 +873,7 @@ dialog::backdrop {
     padding: 10px 12px;
     font-size: 13px;
   }
-  .role-pill {
+  .role-label {
     font-size: 10px;
   }
   .team-row {
@@ -920,5 +886,144 @@ dialog::backdrop {
   }
   .order-card {
     padding: 20px;
+  }
+}
+
+/* Staff tools use the same restrained typography and straight rules. */
+:root {
+  --muted: #596354;
+  --line: #d6dccf;
+}
+.sidebar nav button {
+  min-height: 44px;
+  border-radius: 0;
+}
+.sidebar-bottom {
+  flex-wrap: wrap;
+}
+.sidebar-bottom button {
+  font-size: 12px;
+  text-decoration: underline;
+  min-height: 44px;
+  padding: 6px;
+}
+.role-label {
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  color: var(--muted);
+}
+.page-title h1 {
+  font-weight: 600;
+}
+.panel {
+  border-radius: 0;
+  border: 0;
+  border-top: 2px solid var(--green);
+  background: transparent;
+  padding: 24px 0;
+}
+.stats {
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.stat {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  padding: 20px;
+}
+.stat:last-child {
+  border-right: 0;
+}
+.stat strong {
+  font-size: 44px;
+}
+.order-card {
+  border-radius: 2px;
+  border-top: 3px solid var(--green);
+}
+.badge {
+  border-radius: 0;
+  padding: 3px 6px;
+}
+.item-list {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.menu-thumb {
+  border-radius: 0;
+}
+.empty {
+  text-align: left;
+  padding: 24px 0;
+}
+.login-art {
+  padding: 48px;
+  justify-content: flex-start;
+  border-top: 5px solid var(--gold);
+}
+.login-art img {
+  width: 160px;
+  height: 145px;
+  margin-bottom: 48px;
+}
+.login-art h1 {
+  font-size: 64px;
+}
+.login-art p {
+  margin-top: auto;
+}
+.login-form h2 {
+  font-size: 44px;
+}
+.toast-message,
+dialog {
+  border-radius: 2px;
+}
+@media (max-width: 700px) {
+  .sidebar-bottom {
+    max-width: 180px;
+    gap: 4px;
+  }
+  .sidebar-brand > span {
+    display: none;
+  }
+  .stat {
+    padding: 16px;
+  }
+  .stat:nth-child(2) {
+    border-right: 0;
+  }
+  .stat:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .login-art {
+    padding: 20px 25px;
+    min-height: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+  .login-art img {
+    width: 85px;
+    height: 80px;
+    margin: 0;
+  }
+  .login-art h1 {
+    font-size: 34px;
+  }
+  .login-art h1 br {
+    display: initial;
+  }
+  .panel {
+    padding: 20px 0;
+  }
+  .orders-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

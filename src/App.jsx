@@ -95,27 +95,25 @@ export default function App() {
         <nav>
           {(admin
             ? [
-                ["overview", "◈", "Overview"],
-                ["orders", "☷", "Orders"],
-                ["food", "◉", "Food items"],
-                ["drink", "♧", "Drinks"],
-                ["settings", "⚙", "Settings"],
-                ["team", "♙", "Employees"],
+                ["overview", "Overview"],
+                ["orders", "Orders"],
+                ["food", "Food items"],
+                ["drink", "Drinks"],
+                ["settings", "Settings"],
+                ["team", "Employees"],
               ]
-            : [["orders", "☷", "Orders"]]
-          ).map(([key, icon, name]) => (
+            : [["orders", "Orders"]]
+          ).map(([key, name]) => (
             <button
               key={key}
               className={current === key ? "active" : ""}
               onClick={() => setView(key)}
             >
-              <span aria-hidden="true">{icon}</span>
               {name}
             </button>
           ))}
         </nav>
         <div className="sidebar-bottom">
-          <div className="avatar">{me.username[0].toUpperCase()}</div>
           <div>
             <strong>{me.username}</strong>
             <small>{admin ? "Administrator" : "Employee"}</small>
@@ -132,7 +130,7 @@ export default function App() {
               }
             }}
           >
-            ↪
+            Sign out
           </button>
         </div>
       </aside>
@@ -151,7 +149,7 @@ export default function App() {
               }[current]
             }
           </span>
-          <span className="role-pill">
+          <span className="role-label">
             {admin ? "Admin access" : "Orders only"}
           </span>
         </header>
@@ -194,15 +192,14 @@ function Login({ onLogin }) {
       <section className="login-art">
         <img src="assets/logo.webp" alt="Jam Roc Restaurant & Lounge" />
         <h1>
-          Good food.
+          Jam Roc
           <br />
-          Great teamwork.
+          Staff portal
         </h1>
         <p>Restaurant & Lounge · Staff portal</p>
       </section>
       <section className="login-form">
-        <p className="eyebrow">WELCOME BACK</p>
-        <h2>Let’s get cooking.</h2>
+        <h2>Sign in</h2>
         <p>Sign in to your Jam Roc workspace.</p>
         <form
           onSubmit={async (e) => {
@@ -251,7 +248,7 @@ function Login({ onLogin }) {
             </p>
           )}
           <button disabled={busy} className="primary">
-            {busy ? "Signing in…" : "Sign in →"}
+            {busy ? "Signing in…" : "Sign in"}
           </button>
         </form>
         <p className="muted">Access is limited to your assigned role.</p>
@@ -259,11 +256,10 @@ function Login({ onLogin }) {
     </main>
   );
 }
-function Title({ eyebrow, title, description, children }) {
+function Title({ title, description, children }) {
   return (
     <div className="page-title">
       <div>
-        <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
         {description && <p>{description}</p>}
       </div>
@@ -278,7 +274,6 @@ function Overview({ token, onOrders }) {
   return (
     <>
       <Title
-        eyebrow="YOUR RESTAURANT, AT A GLANCE"
         title="Welcome to Jam Roc."
         description="Keep the kitchen moving and your menu up to date."
       />
@@ -305,7 +300,7 @@ function Overview({ token, onOrders }) {
           pickup progress on the live board.
         </p>
         <button className="primary" onClick={onOrders}>
-          Open orders →
+          Open orders
         </button>
       </section>
       <section className="panel">
@@ -366,9 +361,8 @@ function Orders({ token, admin, notify }) {
   return (
     <>
       <Title
-        eyebrow="LIVE PICKUP QUEUE"
         title="Orders"
-        description="Preparing → Ready → Collected. Updates appear on the customer board."
+        description="Mark orders ready, then collected. Updates appear on the customer board."
       />
       <div className="tabs">
         {["active", "preparing", "ready", "history"].map((k) => (
@@ -423,7 +417,7 @@ function Orders({ token, admin, notify }) {
                       className="primary"
                       onClick={() => update(o._id, "ready")}
                     >
-                      Mark ready ✓
+                      Mark ready
                     </button>
                   )}
                   {o.status === "ready" && (
@@ -433,7 +427,7 @@ function Orders({ token, admin, notify }) {
                         className="primary"
                         onClick={() => update(o._id, "collected")}
                       >
-                        Collected ✓
+                        Collected
                       </button>
                       <button
                         disabled={pending.has(o._id)}
@@ -455,7 +449,6 @@ function Orders({ token, admin, notify }) {
                 : o.status === filter,
           ) && (
             <div className="empty panel">
-              <span className="empty-icon">✓</span>
               <h2>All clear.</h2>
               <p>
                 No orders in this view. Confirmed Toast orders will appear here
@@ -580,7 +573,6 @@ function Menu({ token, kind, notify }) {
   return (
     <>
       <Title
-        eyebrow="YOUR MENU"
         title={kind === "food" ? "Food items" : "Drinks"}
         description="Edit your menu, upload photos, and choose what customers see."
       >
@@ -1011,7 +1003,6 @@ function Settings({ token, notify }) {
   return (
     <>
       <Title
-        eyebrow="RESTAURANT SETTINGS"
         title="Make it yours."
         description="Keep your public contact details and ordering link current."
       />
@@ -1122,7 +1113,6 @@ function Team({ token, notify }) {
   return (
     <>
       <Title
-        eyebrow="YOUR TEAM"
         title="Employee access"
         description="Employees can view orders and mark them ready or collected. Everything else stays with you."
       />
